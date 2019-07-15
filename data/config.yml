@@ -1,0 +1,6 @@
+postgres:
+  PG_PASS: docker
+  PG_USERNAME: postgres
+  PG_HOST: 127.0.0.1
+  PG_DB_NAME: antidote_etl_test
+  PG_PORT: 54320
