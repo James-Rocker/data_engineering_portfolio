@@ -1,6 +1,7 @@
 import sql_create as sc
 import to_db as db
 from time import sleep
+import query as q
 
 
 def main():
@@ -19,6 +20,7 @@ def main():
         # yaml = db.DataObjects(r'data\\config.yml').set_config()  # not used as I am using SQLite
         db.DataObjects(r'data\\config.yml').csv_file(r'data/answers_log.csv', conn)
         print('Data has been imported to the sqlite database in the database folder of the project')
+        q.query(conn, 'select * from answer_log_csv')
         sleep(10)
     else:
         print("Error! Cannot create the database connection. Please contact the admin.")
