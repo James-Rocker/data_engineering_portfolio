@@ -1,6 +1,5 @@
 import yaml
 import csv
-import sql_create as sc
 
 
 class DataObjects(object):
@@ -20,7 +19,8 @@ class DataObjects(object):
 
     def csv_file(self, csv_file, connection):
         """
-        :param csv_file:
+        :param connection: sql db connection
+        :param csv_file: file to load the data
         :return: load the file as a csv in the cache
         """
         with open(csv_file, 'r') as file:
