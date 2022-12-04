@@ -22,6 +22,8 @@ def create_table(conn, create_table_sql):
     """
     try:
         c = conn.cursor()
-        c.execute(create_table_sql)
+        c.execute(
+            create_table_sql
+        )  # TODO: this should have some checks to make sure it's actually a create table statement
     except sqlite3.Error as e:
         print(e)
