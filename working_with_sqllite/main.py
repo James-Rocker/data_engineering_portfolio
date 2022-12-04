@@ -25,7 +25,7 @@ class SqlLiteConnection:
             sc.create_table(
                 self.connection, sql_create_csv_table
             )  # create answer log table
-            query.execute_with_output(
+            query.execute_no_output(
                 self.connection, f"delete from {self.destination_table}"
             )  # if the table does exist then it should be clear
             db.DataObjects(self.connection).load_csv_file(
@@ -43,7 +43,7 @@ class SqlLiteConnection:
         # Checks data has been loaded
         if self.connection is not None:
             try:
-                output = query.execute_no_output(
+                output = query.execute_with_output(
                     self.connection, f"select count(*) from {self.destination_table};"
                 )
                 return output
@@ -54,4 +54,4 @@ class SqlLiteConnection:
 if __name__ == "__main__":
     db_initialise = SqlLiteConnection()
     db_initialise.create_table_load_file()  # Only runs the main function when execute this file
-    print(db_initialise.check_data_exists())
+    print(f"In the {db_initialise.destination_table} table, there are {db_initialise.check_data_exists()[0]} objects")

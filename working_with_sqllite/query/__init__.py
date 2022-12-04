@@ -18,3 +18,16 @@ def execute_with_output(conn, query_txt, fetch_quant="one"):
             return c.fetchall()
     except sqlite3.Error as e:
         print(e)
+
+
+def execute_no_output(conn, query_txt):
+    """
+    :param conn:
+    :param query_txt:
+    :return:
+    """
+    try:
+        c = conn.cursor()
+        c.execute(query_txt)
+    except sqlite3.Error as e:
+        print(e)
